@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<c:forEach var="item" items="${request.getSession().getAttribute("order")}">
+    <c:out value="Name: ${item.getName()}\n"/> 
+    <c:out value="Price: ${item.getPrice()}\n"/> 
+    <c:out value="Quantity: ${item.getQuantity()}\n"/> 
+</c:forEach>
 </body>
 </html>
