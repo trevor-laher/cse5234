@@ -10,5 +10,27 @@
 </head>
 <body>
 
+<form:form modelAttribute="order" method="post" action="purchase/submitPayment">
+	<table style="width:100%; border: 1px solid black">
+		<c: payInf = "${PaymentInfo}"></c:>
+		<tr>
+			<td>Credit Card Number</td>
+			<td><form:input path="payInf.ccNumber" /></td>
+		</tr>
+		<tr>
+			<td>Expiration</td>
+			<td><form:input path="payInf.expiration" /></td>
+		</tr>
+		<tr>
+			<td>CVV</td>
+			<td><form:input path="payInf.cvvCode" /></td>
+		</tr>
+		<tr>
+			<td>Card Name</td>
+			<td><form:input path="payInf.cardName" /></td>
+		</tr>
+	</table>
+</form:form>
+
 </body>
 </html>
