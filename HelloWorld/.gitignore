@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 /build/
 /.settings/
+=======
+/.apt_generated/
+>>>>>>> branch 'master' of https://github.com/jhensal33/cse5234.git
+/bin/
