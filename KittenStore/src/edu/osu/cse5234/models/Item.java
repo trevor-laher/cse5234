@@ -13,6 +13,12 @@ public class Item {
 	private String name;
 	private String price;
 	private String quantity;
+	
+	/**
+     * Default constructor. 
+     */
+    public Item() {
+    }
 
     public String getName() {
 		return name;
@@ -37,11 +43,5 @@ public class Item {
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
-
-	/**
-     * Default constructor. 
-     */
-    public Item() {
-    }
 
 }
