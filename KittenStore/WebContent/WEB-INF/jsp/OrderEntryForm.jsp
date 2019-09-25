@@ -14,9 +14,9 @@
 
     <table style="width:100%; border: 1px solid black">
     	<tr>
-    		<td>Item Name</td>
-    		<td>Price</td>
-    		<td>Quantity</td>
+    		<th>Item Name</th>
+    		<th>Price</th>
+    		<th>Quantity</th>
     	</tr>
 	<c:forEach items="${order.items}" var="item" varStatus="loop">
 		<tr>
