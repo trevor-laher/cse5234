@@ -69,7 +69,8 @@ public class Purchase {
 	}
 
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
-	public String paymentEntry() throws Exception {
+	public String paymentEntry(HttpServletRequest request) throws Exception {
+		request.setAttribute("payment", new PaymentInfo());
 		return "PaymentEntryForm";
 	}
 	
@@ -80,8 +81,9 @@ public class Purchase {
 	}
 
 	@RequestMapping(path = "/shippingEntry", method = RequestMethod.GET)
-	public String shippingEntry() throws Exception {
-		return "HelloJSP";
+	public String shippingEntry(HttpServletRequest request) throws Exception {
+		request.setAttribute("shipping", new ShippingInfo());
+		return "ShippingEntryForm";
 	}
 	
 	@RequestMapping(path = "/submitShipping", method = RequestMethod.POST)
@@ -92,7 +94,7 @@ public class Purchase {
 
 	@RequestMapping(path = "/viewOrder", method = RequestMethod.GET)
 	public String viewOrder() throws Exception {
-		return "HelloJSP";
+		return "ViewOrder";
 	}	
 
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
@@ -103,7 +105,7 @@ public class Purchase {
 
 	@RequestMapping(path = "/viewConfirmation", method = RequestMethod.GET)
 	public String viewConfirmation() throws Exception {
-		return "HelloJSP";
+		return "Confirmation";
 	}	
 
 }

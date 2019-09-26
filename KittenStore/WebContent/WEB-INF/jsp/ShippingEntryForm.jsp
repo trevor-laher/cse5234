@@ -9,16 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form:form modelAttribute="shipping" method="post" action="purchase/submitShipping">
+<form:form modelAttribute="shipping" method="post" action="submitShipping">
     <table style="width:100%; border: 1px solid black">
-    	<td>Name: <form:input path="shipping.name" readonly="true" /></td>
-    	<td>AddressLine 1: <form:input path="shipping.addressLine1" readonly="true" /></td>
-    	<td>AddressLine 2:<form:input path="shipping.addressLine2" readonly="true" /></td>
-    	<td>City: <form:input path="shipping.city" readonly="true" /></td>
-    	<td>State: <form:input path="shipping.state" readonly="true" /></td>
-    	<td>Zip: <form:input path="shipping.zip" readonly="true" /></td>
+    	<tr><td>Name: </td><td><form:input path="name" /></td></tr>
+    	<tr><td>AddressLine 1: </td><td><form:input path="addressLine1" /></td></tr>
+    	<tr><td>AddressLine 2: </td><td><form:input path="addressLine2" /></td></tr>
+    	<tr><td>City: </td><td><form:input path="city" /></td></tr>
+    	<tr><td>State: </td><td><form:input path="state" /></td></tr>
+    	<tr><td>Zip: </td><td><form:input path="zip" /></td></tr>
+    	<tr>
+		<td colspan="2"><input type="submit" value="Payment"></td>
+	  	</tr>
     </table>
 </form:form>
-
 </body>
 </html>
