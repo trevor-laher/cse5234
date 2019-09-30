@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Payment</title>
 </head>
 <body>
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
