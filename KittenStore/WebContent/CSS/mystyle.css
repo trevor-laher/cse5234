@@ -13,11 +13,11 @@ body {
 	height: 100%;
 }
 
-.header {
+#header {
 	padding: 10px;
 	width: 100%;
 	text-align: center;
-	background-color: #F2F2F2;
+	background-color: #FF69B4;
 	color: #424242;
 }
 
