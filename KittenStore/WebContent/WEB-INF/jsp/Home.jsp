@@ -8,5 +8,11 @@
 </head>
 <body>
 
+<jsp:include page="Header.jsp" />
+<hr>
+<h1> Here is the home page content </h1>
+<hr>
+<jsp:include page="Footer.jsp" />
+
 </body>
 </html>

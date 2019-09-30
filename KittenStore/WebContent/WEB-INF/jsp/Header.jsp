@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
-
+	<div>
+	<h3>Make a  <a href="/purchase">Purchase</a> </h3>
+	</div>
 </body>
 </html>
