@@ -10,6 +10,7 @@
 <title>Payment</title>
 </head>
 <body>
+
 <jsp:include page="Header.jsp" />
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
 
