@@ -14,6 +14,7 @@
     <c:out value="Price: ${item.getPrice()}\n"/> 
     <c:out value="Quantity: ${item.getQuantity()}\n"/> 
 </c:forEach>
+
 <table style="width:100%; border: 1px solid black">
 	<tr><td><div> Thank You <c:out value="${shipping.getName()}"/> for your order.</div></td></tr>
 	<div> </div>
