@@ -8,7 +8,9 @@
 </head>
 <body>
 	<div>
-	<h3>Make a  <a href="/purchase">Purchase</a> </h3>
+	<h3>Make a  <a href="/KittenStore/purchase">Purchase</a> </h3>
 	</div>
+	
+	
 </body>
 </html>
