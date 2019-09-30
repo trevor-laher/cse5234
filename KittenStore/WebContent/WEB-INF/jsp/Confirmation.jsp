@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Order Confirmation</title>
 </head>
 <body>
 <c:forEach var="item" items="${order.getItems()}">

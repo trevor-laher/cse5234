@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Review Order</title>
 </head>
 <body>
 <table style="width:100%; border: 1px solid black">
