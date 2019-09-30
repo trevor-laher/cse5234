@@ -28,6 +28,6 @@
 <p>An expert at packaging kittens such that they survive the 110 degree shipping warehouses, all so you kitten makes it to your home safe and sound.</p>
 <br>
 <jsp:include page="Footer.jsp"/>
-</br>
+<br>
 </body>
 </html>

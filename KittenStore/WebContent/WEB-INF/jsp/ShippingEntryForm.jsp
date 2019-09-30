@@ -9,6 +9,7 @@
 <title>Shipping</title>
 </head>
 <body>
+<jsp:include page="Header.jsp" />
 <form:form modelAttribute="shipping" method="post" action="submitShipping">
     <table style="width:100%; border: 1px solid black">
     	<tr><td>Name: </td><td><form:input path="name" /></td></tr>
@@ -23,4 +24,5 @@
     </table>
 </form:form>
 </body>
+<jsp:include page="Footer.jsp" />
 </html>

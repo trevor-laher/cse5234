@@ -10,6 +10,8 @@
 <title>Payment</title>
 </head>
 <body>
+
+<jsp:include page="Header.jsp" />
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
 
     <table style="width:100%; border: 1px solid black">
@@ -34,6 +36,6 @@
 
     </table>
 </form:form>
-
+<jsp:include page="Footer.jsp" />
 </body>
 </html>
