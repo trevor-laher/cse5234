@@ -10,11 +10,18 @@
 </head>
 <body>
 <table style="width:100%; border: 1px solid black">
-	<tr><th>Order</th></tr>
+	<tr>
+		<th>Item Name</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		
+	</tr>
 <c:forEach var="item" items="${order.getItems()}">
-	<tr><td><c:out value="Name: ${item.getName()}"/></td></tr>
-	<tr><td><c:out value="Price: ${item.getPrice()}"/></td></tr>
-	<tr><td><c:out value="Quantity: ${item.getQuantity()}"/></td></tr>
+	<tr>
+		<td><c:out value="Name: ${item.getName()}"/></td>
+		<td><c:out value="Price: ${item.getPrice()}"/></td>
+		<td><c:out value="Quantity: ${item.getQuantity()}"/></td>
+	</tr>
 </c:forEach>
 </table>
 <form:form modelAttribute="order" method="post" action="confirmOrder">
