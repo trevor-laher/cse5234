@@ -9,10 +9,10 @@
 <title>Contact Us</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="Header.jsp"/>
 <h1>Phone: 555-123-4567</h1>
 <h1>Email: kittenstore3000@gmail.com</h1>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="Footer.jsp"/>
 
 </body>
 </html>
