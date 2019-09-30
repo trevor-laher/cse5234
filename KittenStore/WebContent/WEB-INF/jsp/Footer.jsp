@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>&copy; All Rights Reserved 2019: Kitten Store Co</div>
+<div>&copy; All Rights Reserved 2019: Kitten Store</div>
 </body>
 </html>
