@@ -9,6 +9,7 @@
 <title>Review Order</title>
 </head>
 <body>
+<jsp:include page="Header.jsp" />
 <table style="width:100%; border: 1px solid black">
 	<tr>
 		<th>Item Name</th>
@@ -28,4 +29,5 @@
 <input type="submit" value="Purchase">
 </form:form>
 </body>
+<jsp:include page="Footer.jsp" />
 </html>

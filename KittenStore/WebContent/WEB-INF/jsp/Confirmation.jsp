@@ -9,6 +9,7 @@
 <title>Order Confirmation</title>
 </head>
 <body>
+<jsp:include page="Header.jsp" />
 <c:forEach var="item" items="${order.getItems()}">
     <c:out value="Name: ${item.getName()}\n"/> 
     <c:out value="Price: ${item.getPrice()}\n"/> 
@@ -30,6 +31,6 @@
 	<tr><td><div>Your Order will be shipped to: <c:out value="${shipping.getName()}"/> , <c:out value="${shipping.getAddressLine1()}"/>, <c:out value="${shipping.getAddressLine2()}"/>
 	<c:out value="${shipping.getCity()}"/>, <c:out value="${shipping.getState()}"/>, <c:out value="${shipping.getZip()}"/></div></td></tr>
 </table>
-
+<jsp:include page="Footer.jsp" />
 </body>
 </html>
