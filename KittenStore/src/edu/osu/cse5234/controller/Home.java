@@ -16,4 +16,15 @@ public class Home {
 		return "Home";
 	}		
 	
+	@RequestMapping(path = "/about", method = RequestMethod.GET)
+	public String aboutUs(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "AboutUs";
+	}		
+	
+	@RequestMapping(path = "/contact", method = RequestMethod.GET)
+	public String contactUs(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "ContactUs";
+	}		
+	
+	
 }
