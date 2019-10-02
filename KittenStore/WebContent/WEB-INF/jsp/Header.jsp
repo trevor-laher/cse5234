@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="header">
-		<h1>Feline Beeline</h1>
+		<h1>Feline Beeline </h1>
 		<h4>For all your Cat Purchasing Needs</h4>
 		<Span> <a href="/KittenStore/">Home</a> | </span>
 		<Span><a href="/KittenStore/purchase">Make a Purchase</a> | </span>
