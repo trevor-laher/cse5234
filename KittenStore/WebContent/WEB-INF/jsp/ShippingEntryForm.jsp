@@ -12,6 +12,7 @@
 <jsp:include page="Header.jsp" />
 <form:form modelAttribute="shipping" method="post" action="submitShipping">
     <table style="width:100%; border: 1px solid black">
+    	<tr><th>Shipping Address</th></tr>
     	<tr><td>Name: </td><td><form:input path="name" /></td></tr>
     	<tr><td>AddressLine 1: </td><td><form:input path="addressLine1" /></td></tr>
     	<tr><td>AddressLine 2: </td><td><form:input path="addressLine2" /></td></tr>

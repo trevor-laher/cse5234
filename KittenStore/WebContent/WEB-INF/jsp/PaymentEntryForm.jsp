@@ -12,6 +12,7 @@
 <jsp:include page="Header.jsp" />
 <form:form modelAttribute="payment" method="post" action="submitPayment">
     <table style="width:100%; border: 1px solid black">
+    	<tr><th>Credit Card Information</th></tr>
     	<tr><td>Name: </td><td><form:input path="cardName" /></td></tr>
     	<tr><td>CC Number: </td><td><form:input path="ccNumber" /></td></tr>
     	<tr><td>Expiration: </td><td><form:input path="expiration" /></td></tr>
