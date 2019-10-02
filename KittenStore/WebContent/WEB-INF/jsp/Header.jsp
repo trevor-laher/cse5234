@@ -8,8 +8,13 @@
 <link href="${pageContext.request.contextPath}/CSS/mystyle.css" rel="stylesheet"/>
 </head>
 <body>
-	<div>
-	<h3 id="header">Make a <a href="/KittenStore/purchase">Purchase</a> </h3>
+	<div class="header">
+		<h1>Feline Beeline</h1>
+		<h4>For all your Cat Purchasing Needs</h4>
+		<Span> <a href="/KittenStore/">Home</a> | </span>
+		<Span><a href="/KittenStore/purchase">Make a Purchase</a> | </span>
+		<Span><a href="/KittenStore/about">About Us</a> | </span>
+		<Span><a href="/KittenStore/contact">Contact Us</a></span>
 	</div>
 </body>
 </html>
