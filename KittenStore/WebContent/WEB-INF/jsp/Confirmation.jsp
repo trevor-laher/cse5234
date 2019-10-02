@@ -17,18 +17,17 @@
 </c:forEach>
 
 <table style="width:100%; border: 1px solid black">
-	<tr><td><div> Thank You <c:out value="${shipping.getName()}"/> for your order.</div></td></tr>
-	<div> </div>
+	<tr><th>Order Confirmation</th></tr>
+	<tr><td> Thank You for your order <b></b><c:out value="${shipping.getName()}"/></b>.</td></tr>
 	<c:set var = "payment" scope = "session" value = "${payment}"/>
 	<c:set var = "shipping" scope = "session" value = "${shipping}"/>
+	<tr><td>Please Confirm that the payment info for <c:out value = "${payment.getCardName()}"/> is correct:</td></tr>
+	<tr><td>Credit Card Number: <c:out value = "${payment.getCcNumber()}"/></td></tr>
+	<tr><td>Expiration Date: <c:out value = "${payment.getExpiration()}"/></td></tr>
+	<tr><td>CVV: <c:out value = "${payment.getCvvCode()}"/></tr>
 
-	<tr><td><div>Please Confirm that your payment info for <c:out value = "${payment.getCardName()}"/> is correct:</div></td></tr>
-	<tr><td><div>Credit Card Number: <c:out value = "${payment.getCcNumber()}"/></div></td></tr>
-	<tr><td><div>Expiration Date: <c:out value = "${payment.getExpiration()}"/></div></td></tr>
-	<tr><td><div>CVV: <c:out value = "${payment.getCvvCode()}"/></div></tr>
 
-
-	<tr><td><div>Your Order will be shipped to: <c:out value="${shipping.getName()}"/> , <c:out value="${shipping.getAddressLine1()}"/>, <c:out value="${shipping.getAddressLine2()}"/>
+	<tr><td><div>Your Order will be shipped to: <c:out value="${shipping.getAddressLine1()}"/>, <c:out value="${shipping.getAddressLine2()}"/>
 	<c:out value="${shipping.getCity()}"/>, <c:out value="${shipping.getState()}"/>, <c:out value="${shipping.getZip()}"/></div></td></tr>
 </table>
 <jsp:include page="Footer.jsp" />
