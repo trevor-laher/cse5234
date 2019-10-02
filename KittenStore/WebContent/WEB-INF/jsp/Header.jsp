@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title></title>
-	<jsp:include page="/CSS/mystyle.css" />
+<link href="${pageContext.request.contextPath}/CSS/mystyle.css" rel="stylesheet"/>
 </head>
 <body>
 	<div>
