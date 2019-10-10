@@ -1,6 +1,7 @@
-package edu.osu.cse5234.models;
+package edu.osu.cse5234.business;
 
 import javax.ejb.LocalBean;
+import java.io.Serializable;
 import javax.ejb.Stateless;
 
 /**

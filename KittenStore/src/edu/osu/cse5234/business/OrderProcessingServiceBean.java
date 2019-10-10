@@ -22,5 +22,5 @@ public class OrderProcessingServiceBean {
     public String processOrder(Order order) {
     	return "";
     } 
-
+    public boolean validateItemAvailability(Order order)
 }

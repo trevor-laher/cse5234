@@ -4,8 +4,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import edu.osu.cse5234.business.OrderProcessingServiceBean;
-import edu.osu.cse5234.business.view.InventoryService;
-
+import edu.osu.cse5234.business.InventoryService;
 public class ServiceLocator {
 
 	public static OrderProcessingServiceBean getOrderProcessingService() {
