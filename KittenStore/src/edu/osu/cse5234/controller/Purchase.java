@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.osu.cse5234.business.InventoryService;
+import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.models.Order;
@@ -42,7 +43,13 @@ public class Purchase {
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) throws Exception {
 		request.getSession().setAttribute("order", order);
-		return "redirect:/purchase/paymentEntry";
+		OrderProcessingServiceBean orderProcess = new OrderProcessingServiceBean();
+		String redirect = "redirect:/purchase/paymentEntry";
+		if(!orderProcess.validateItemAvailability(order)) {
+			//NEED TO ADD ALERT MESSAGE FOR INCORRECT ORDER
+			redirect = "redirect:/purchase/viewOrderEntryForm";
+		}
+		return redirect;
 	}
 
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
@@ -76,7 +83,10 @@ public class Purchase {
 
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(@ModelAttribute("order") Order order, HttpServletRequest request) throws Exception {
+		OrderProcessingServiceBean orderProcess = new OrderProcessingServiceBean();
+		String confirm = orderProcess.processOrder(order);
 		request.getSession().setAttribute("order", order);
+		request.getSession().setAttribute("confirm", confirm);
 		return "redirect:/purchase/viewConfirmation";
 	}	
 

@@ -1,15 +1,16 @@
-package edu.osu.cse5234.business;
+package edu.osu.cse5234.business.view;
 
 import javax.ejb.LocalBean;
 import java.io.Serializable;
 import javax.ejb.Stateless;
+import java.util.Comparator;
 
 /**
  * Session Bean implementation class Item
  */
 @Stateless
 @LocalBean
-public class Item {
+public class Item implements Comparator{
 	
 	private String name;
 	private String price;
@@ -19,6 +20,19 @@ public class Item {
      * Default constructor. 
      */
     public Item() {
+    }
+    
+    public int compare(Object item1, Object item2) {
+    	return 1;
+    }
+    
+    public int equals(Item item1) {
+    	if(this.getName().equals(item1.getName())) {
+    		return 0;
+    		}
+    	else {
+    			return 1;
+    		}
     }
 
     public String getName() {
