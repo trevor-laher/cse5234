@@ -12,6 +12,7 @@
 <body>
 
 <jsp:include page="Header.jsp" />
+<h1><%= request.getSession().getAttribute("error") %></h1>
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
 
     <table style="width:100%; border: 1px solid black">

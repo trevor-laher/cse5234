@@ -46,7 +46,7 @@ public class Purchase {
 		OrderProcessingServiceBean orderProcess = new OrderProcessingServiceBean();
 		String redirect = "redirect:/purchase/paymentEntry";
 		if(!orderProcess.validateItemAvailability(order)) {
-			//NEED TO ADD ALERT MESSAGE FOR INCORRECT ORDER
+			request.getSession().setAttribute("error", "There was an error in your order, please try again.");
 			redirect = "redirect:/purchase/viewOrderEntryForm";
 		}
 		return redirect;
