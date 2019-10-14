@@ -5,6 +5,7 @@ import javax.ejb.Stateless;
 import java.util.List;
 import java.util.UUID;
 
+import edu.osu.cse5234.business.view.InventoryServiceRemote;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.models.Order;
 import edu.osu.cse5234.util.ServiceLocator;
@@ -26,7 +27,7 @@ public class OrderProcessingServiceBean {
     public String processOrder(Order order) {
     	String confirmation = UUID.randomUUID().toString();
     	if (this.validateItemAvailability(order)) {
-    		InventoryService invService = ServiceLocator.getInventoryService();
+    		InventoryServiceRemote invService = ServiceLocator.getInventoryService();
         	List<Item> invItems = invService.getAvailableInventory().getInventory();
         	List<Item> items = order.getItems();
         	int itemsSize = items.size();
@@ -60,7 +61,7 @@ public class OrderProcessingServiceBean {
     	return confirmation;
     } 
     public boolean validateItemAvailability(Order order) {
-    	InventoryService invService = ServiceLocator.getInventoryService();
+    	InventoryServiceRemote invService = ServiceLocator.getInventoryService();
     	List<Item> invItems = invService.getAvailableInventory().getInventory();
     	List<Item> items = order.getItems();
     	int itemsSize = items.size();

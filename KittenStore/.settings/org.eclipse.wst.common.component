@@ -5,9 +5,6 @@
         <dependent-module archiveName="InventoryManagement-EJBClient.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/InventoryManagement-EJBClient/InventoryManagement-EJBClient">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="InventoryManagement-EJB.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/InventoryManagement-EJB/InventoryManagement-EJB">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="KittenStore"/>
         <property name="java-output-path" value="/KittenStore/build/classes"/>
     </wb-module>

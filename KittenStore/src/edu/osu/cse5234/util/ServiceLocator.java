@@ -4,7 +4,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import edu.osu.cse5234.business.OrderProcessingServiceBean;
-import edu.osu.cse5234.business.InventoryService;
+import edu.osu.cse5234.business.view.InventoryServiceRemote;
 public class ServiceLocator {
 
 	public static OrderProcessingServiceBean getOrderProcessingService() {
@@ -16,10 +16,10 @@ public class ServiceLocator {
 		}
 	}
 	
-	public static InventoryService getInventoryService() {
+	public static InventoryServiceRemote getInventoryService() {
 		try {
-	         return (InventoryService) InitialContext.doLookup(
-					"java:global/KittenStore-InventoryManagement-EJBEAR/KittenStore-InventoryManagement-EJB/InventoryServiceBean!edu.osu.cse5234.business.InventoryService");
+			return (InventoryServiceRemote) InitialContext.doLookup(
+	        		 "java:global/InventoryManagement-EJBEAR/InventoryManagement-EJB/InventoryService!edu.osu.cse5234.business.view.InventoryServiceRemote");
 		} catch (NamingException ne) {
 				throw new RuntimeException(ne);
 		}

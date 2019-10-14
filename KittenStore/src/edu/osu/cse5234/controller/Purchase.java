@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.osu.cse5234.business.InventoryService;
 import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
+import edu.osu.cse5234.business.view.InventoryServiceRemote;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.models.Order;
 import edu.osu.cse5234.models.PaymentInfo;
 import edu.osu.cse5234.models.ShippingInfo;
+import edu.osu.cse5234.util.ServiceLocator;
 
 @Controller
 @RequestMapping("/purchase")
@@ -26,7 +27,7 @@ public class Purchase {
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		InventoryService invSrc = new InventoryService();
+		InventoryServiceRemote invSrc = ServiceLocator.getInventoryService();
 		Inventory inv = invSrc.getAvailableInventory();
 		
 		Order order = new Order();
