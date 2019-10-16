@@ -38,17 +38,22 @@ public class Purchase {
 		
 		request.setAttribute("order", order);
 		
+		if(request.getSession().getAttribute("error") == null) {
+			request.getSession().setAttribute("error", " ");
+		}
+		
 		return "OrderEntryForm";
 	}
 	
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) throws Exception {
 		request.getSession().setAttribute("order", order);
+		request.getSession().removeAttribute("error");
 		OrderProcessingServiceBean orderProcess = new OrderProcessingServiceBean();
 		String redirect = "redirect:/purchase/paymentEntry";
 		if(!orderProcess.validateItemAvailability(order)) {
 			request.getSession().setAttribute("error", "There was an error in your order, please try again.");
-			redirect = "redirect:/purchase/viewOrderEntryForm";
+			redirect = "redirect:/purchase";
 		}
 		return redirect;
 	}

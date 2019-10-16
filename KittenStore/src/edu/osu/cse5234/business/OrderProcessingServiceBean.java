@@ -70,13 +70,8 @@ public class OrderProcessingServiceBean {
     	
     	while(i < itemsSize && valid) {
     		Item currentItem = items.get(i);
-    		int invIndex = invItems.indexOf(currentItem);
-    		if(invIndex != -1) {
-    			Item invItem = invItems.get(invIndex);
-    			valid = Integer.parseInt(currentItem.getQuantity()) <= Integer.parseInt(invItem.getQuantity());
-    		} else {
-    			valid = false;
-    		}
+    		Item invItem = invItems.get(i);
+    		valid = Integer.parseInt(currentItem.getQuantity()) <= Integer.parseInt(invItem.getQuantity());
     		i += 1;
     	}
     	return valid;

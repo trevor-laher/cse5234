@@ -1,16 +1,10 @@
 package edu.osu.cse5234.business.view;
 
-import javax.ejb.LocalBean;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 import java.util.Comparator;
 
-/**
- * Session Bean implementation class Item
- */
-@Stateless
-@LocalBean
-public class Item implements Comparator{
+public class Item implements Comparator, Serializable{
 	
 	private String name;
 	private String price;
