@@ -35,6 +35,7 @@ public class Purchase {
 		List<Item> lst = inv.getInventory();
 		
 		order.setItems(lst);
+		order.setLineItems
 		
 		request.setAttribute("order", order);
 		

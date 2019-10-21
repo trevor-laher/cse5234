@@ -1,25 +1,42 @@
 package edu.osu.cse5234.models;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-/**
- * Session Bean implementation class PaymentInfo
- */
-@Stateless
-@LocalBean
+@Entity
+@Table (name="PAYMENT_INFO")
 public class PaymentInfo {	
 	
-    /**
-     * Default constructor. 
-     */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name="ID")
+	private int id;
+	
+	@Column (name="CC_NUMBER")
+	private String ccNumber;
+	
+	@Column (name="EXPIRATION")
+	private String expiration;
+	
+	@Column (name="CVV_CODE")
+	private String cvvCode;
+	
+	@Column (name="CARD_NAME")
+	private String cardName;
+	
     public PaymentInfo() {
     }
 
-	private String ccNumber;
-	private String expiration;
-	private String cvvCode;
-	private String cardName;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getCcNumber() {
 		return ccNumber;

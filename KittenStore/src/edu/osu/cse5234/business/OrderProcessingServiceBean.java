@@ -2,11 +2,15 @@ package edu.osu.cse5234.business;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import java.util.List;
 import java.util.UUID;
 
 import edu.osu.cse5234.business.view.InventoryServiceRemote;
 import edu.osu.cse5234.business.view.Item;
+import edu.osu.cse5234.models.LineItem;
 import edu.osu.cse5234.models.Order;
 import edu.osu.cse5234.util.ServiceLocator;
 
@@ -17,9 +21,9 @@ import edu.osu.cse5234.util.ServiceLocator;
 @LocalBean
 public class OrderProcessingServiceBean {
 
-    /**
-     * Default constructor. 
-     */
+	@PersistenceContext
+	EntityManager entityManager;
+	
     public OrderProcessingServiceBean() {
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +33,22 @@ public class OrderProcessingServiceBean {
     	if (this.validateItemAvailability(order)) {
     		InventoryServiceRemote invService = ServiceLocator.getInventoryService();
         	List<Item> invItems = invService.getAvailableInventory().getInventory();
-        	List<Item> items = order.getItems();
+        	List<LineItem> items = order.getLineItems();
         	int itemsSize = items.size();
         	boolean valid = true;
         	int i = 0;
         	
         	while(i < itemsSize && valid) {
-        		Item currentItem = items.get(i);
+        		LineItem currentItem = items.get(i);
         		int invIndex = invItems.indexOf(currentItem);
         		if(invIndex != -1) {
         			Item invItem = invItems.get(invIndex);
-        			int invItemCount = Integer.parseInt(invItem.getQuantity());
-        			int itemCount = Integer.parseInt(currentItem.getQuantity());
+        			int invItemCount = invItem.getAvailableQuantity();
+        			int itemCount = currentItem.getQuantity();
         			valid = itemCount <= invItemCount;
         			if(valid) { 
         				int newCount = invItemCount - itemCount;
-        				invItem.setQuantity("" + newCount);
+        				invItem.setAvailableQuantity(newCount);
         			}
         		} else {
         			valid = false;
@@ -58,20 +62,22 @@ public class OrderProcessingServiceBean {
     	} else {
     		confirmation = "ERROR";
     	}
+    	entityManager.persist(order);
+    	entityManager.flush();
     	return confirmation;
     } 
     public boolean validateItemAvailability(Order order) {
     	InventoryServiceRemote invService = ServiceLocator.getInventoryService();
     	List<Item> invItems = invService.getAvailableInventory().getInventory();
-    	List<Item> items = order.getItems();
+    	List<LineItem> items = order.getLineItems();
     	int itemsSize = items.size();
     	boolean valid = true;
     	int i = 0;
     	
     	while(i < itemsSize && valid) {
-    		Item currentItem = items.get(i);
+    		LineItem currentItem = items.get(i);
     		Item invItem = invItems.get(i);
-    		valid = Integer.parseInt(currentItem.getQuantity()) <= Integer.parseInt(invItem.getQuantity());
+    		valid = currentItem.getQuantity() <= invItem.getAvailableQuantity();
     		i += 1;
     	}
     	return valid;
