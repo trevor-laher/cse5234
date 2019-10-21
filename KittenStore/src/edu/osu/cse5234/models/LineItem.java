@@ -27,6 +27,9 @@ public class LineItem {
 	@Transient
 	private double price;
 	
+	@Transient
+	private String description;
+	
 	@Column (name="QUANTITY")
 	private int quantity;
 
@@ -69,4 +72,13 @@ public class LineItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 }

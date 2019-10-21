@@ -14,16 +14,15 @@
 <jsp:include page="Header.jsp" />
 <h1><%= request.getSession().getAttribute("error") %></h1>
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
-
     <table style="width:100%; border: 1px solid black">
     	<tr>
     		<th>Item Name</th>
     		<th>Price</th>
     		<th>Quantity</th>
     	</tr>
-	<c:forEach items="${order.items}" var="item" varStatus="loop">
+	<c:forEach items="${order.lineItems}" var="item" varStatus="loop">
 		<tr>
-			<td><form:input path="items[${loop.index}].name" readonly="true" /></td>
+			<td><form:input path="items[${loop.index}].itemName" readonly="true" /></td>
 			<td>$<form:input path="items[${loop.index}].price" readonly="true" /></td>
 			<td><form:input path="items[${loop.index}].quantity" /></td>
 			

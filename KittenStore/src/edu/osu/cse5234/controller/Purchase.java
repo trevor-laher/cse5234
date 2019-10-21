@@ -15,6 +15,7 @@ import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.InventoryServiceRemote;
 import edu.osu.cse5234.business.view.Item;
+import edu.osu.cse5234.models.LineItem;
 import edu.osu.cse5234.models.Order;
 import edu.osu.cse5234.models.PaymentInfo;
 import edu.osu.cse5234.models.ShippingInfo;
@@ -29,13 +30,21 @@ public class Purchase {
 		
 		InventoryServiceRemote invSrc = ServiceLocator.getInventoryService();
 		Inventory inv = invSrc.getAvailableInventory();
+		List<Item> invItems = inv.getInventory();
+		List<LineItem> items = new ArrayList<LineItem>();
+		
+		for (Item invItem : invItems) {
+			LineItem current = new LineItem();
+			current.setItemName(invItem.getName());
+			current.setItemNumber(invItem.getItemNumber());
+			current.setDescription(invItem.getDescription());
+			current.setPrice(invItem.getUnitPrice());
+			current.setQuantity(invItem.getAvailableQuantity());
+			items.add(current);
+		}
 		
 		Order order = new Order();
-		
-		List<Item> lst = inv.getInventory();
-		
-		order.setItems(lst);
-		order.setLineItems
+		order.setLineItems(items);
 		
 		request.setAttribute("order", order);
 		
