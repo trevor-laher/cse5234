@@ -4,7 +4,6 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -18,7 +17,6 @@ import edu.osu.cse5234.util.ServiceLocator;
  * Session Bean implementation class OrderProcessingServiceBean
  */
 @Stateless
-@LocalBean
 public class OrderProcessingServiceBean {
 
 	@PersistenceContext
@@ -56,14 +54,14 @@ public class OrderProcessingServiceBean {
         		i += 1;
         	}
         	invService.updateInventory(invItems);
+        	entityManager.persist(order);
+        	entityManager.flush();
         	if(!valid) {
         		confirmation = "ERROR";
         	}
     	} else {
     		confirmation = "ERROR";
     	}
-    	entityManager.persist(order);
-    	entityManager.flush();
     	return confirmation;
     } 
     public boolean validateItemAvailability(Order order) {

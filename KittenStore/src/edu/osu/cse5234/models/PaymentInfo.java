@@ -16,16 +16,16 @@ public class PaymentInfo {
 	@Column (name="ID")
 	private int id;
 	
-	@Column (name="CC_NUMBER")
+	@Column (name="CARD_NUM")
 	private String ccNumber;
 	
-	@Column (name="EXPIRATION")
+	@Column (name="EXP_DATE")
 	private String expiration;
 	
-	@Column (name="CVV_CODE")
+	@Column (name="CVV")
 	private String cvvCode;
 	
-	@Column (name="CARD_NAME")
+	@Column (name="HOLDER_NAME")
 	private String cardName;
 	
     public PaymentInfo() {

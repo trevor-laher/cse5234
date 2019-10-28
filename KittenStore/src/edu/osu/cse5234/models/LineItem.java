@@ -17,7 +17,7 @@ public class LineItem {
 	@Column (name="ID")
 	private int id;
 	
-	@Column (name="ITEM_ID")
+	@Column (name="ITEM_NUMBER")
 	private int itemNumber;
 	
 	@Column (name="ITEM_NAME")

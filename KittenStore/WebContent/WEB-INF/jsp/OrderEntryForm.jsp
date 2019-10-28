@@ -22,13 +22,17 @@
     	</tr>
 	<c:forEach items="${order.lineItems}" var="item" varStatus="loop">
 		<tr>
-			<td><form:input path="items[${loop.index}].itemName" readonly="true" /></td>
-			<td>$<form:input path="items[${loop.index}].price" readonly="true" /></td>
-			<td><form:input path="items[${loop.index}].quantity" /></td>
+			<td><form:input path="lineItems[${loop.index}].itemName" readonly="true" /></td>
+			<td>$<form:input path="lineItems[${loop.index}].price" readonly="true" /></td>
+			<td><form:input path="lineItems[${loop.index}].quantity" /></td>
 			
 		</tr>
 	</c:forEach>
-
+		
+		<tr>
+			<td>Name: <form:input path="customerName" /></td>
+			<td>Email Address:<form:input path="emailAddress" /></td>
+		</tr>
 	  <tr>
 		<td colspan="2"><input type="submit" value="Purchase"></td>
 	  </tr>

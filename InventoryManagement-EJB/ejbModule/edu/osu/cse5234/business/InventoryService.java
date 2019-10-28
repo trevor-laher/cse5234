@@ -18,7 +18,7 @@ public class InventoryService implements InventoryServiceRemote {
 	@PersistenceContext
 	EntityManager entityManager;
 	
-	private String itemQuery = "SELECT i FROM ITEM i";
+	private String itemQuery = "select i from Item i";
 
     /**
      * Default constructor. 

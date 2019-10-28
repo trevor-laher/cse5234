@@ -99,7 +99,12 @@ public class Purchase {
 
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(@ModelAttribute("order") Order order, HttpServletRequest request) throws Exception {
-		OrderProcessingServiceBean orderProcess = new OrderProcessingServiceBean();
+		order = (Order)request.getSession().getAttribute("order");
+		ShippingInfo shipping = (ShippingInfo)request.getSession().getAttribute("shipping");
+		order.setShipping(shipping);
+		PaymentInfo payment = (PaymentInfo)request.getSession().getAttribute("payment");
+		order.setPayment(payment);
+		OrderProcessingServiceBean orderProcess = ServiceLocator.getOrderProcessingService();
 		String confirm = orderProcess.processOrder(order);
 		request.getSession().setAttribute("order", order);
 		request.getSession().setAttribute("confirm", confirm);

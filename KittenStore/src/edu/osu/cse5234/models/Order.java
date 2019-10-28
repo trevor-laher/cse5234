@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 
 @Entity
-@Table (name="ORDERS")
+@Table (name="CUSTOMER_ORDER")
 public class Order {
 	
 	@Id
@@ -26,7 +26,7 @@ public class Order {
 	
 	@Column (name="CUSTOMER_NAME")
 	private String customerName;
-	
+
 	@Column (name="CUSTOMER_EMAIL")
 	private String emailAddress;
 	
@@ -79,6 +79,22 @@ public class Order {
 
 	public void setLineItems(List<LineItem> items) {
 		this.lineItems = items;
+	}
+	
+	public PaymentInfo getPayment() {
+		return payment;
+	}
+
+	public void setPayment(PaymentInfo payment) {
+		this.payment = payment;
+	}
+
+	public ShippingInfo getShipping() {
+		return shipping;
+	}
+
+	public void setShipping(ShippingInfo shipping) {
+		this.shipping = shipping;
 	}
 
 }

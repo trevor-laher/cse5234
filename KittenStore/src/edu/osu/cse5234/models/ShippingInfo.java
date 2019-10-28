@@ -19,10 +19,10 @@ public class ShippingInfo {
 	@Column (name="NAME")
 	private String name;
 	
-	@Column (name="ADDRESS_LINE_1")
+	@Column (name="ADDRESS1")
 	private String addressLine1;
 	
-	@Column (name="ADDRESS_LINE_2")
+	@Column (name="ADDRESS2")
 	private String addressLine2;
 	
 	@Column (name="CITY")
@@ -30,8 +30,8 @@ public class ShippingInfo {
 	
 	@Column (name="STATE")
 	private String state;
-	
-	@Column (name="ZIP")
+
+	@Column (name="POSTAL_CODE")
 	private String zip;
 	
 	public ShippingInfo() {
@@ -92,5 +92,4 @@ public class ShippingInfo {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-
 }
