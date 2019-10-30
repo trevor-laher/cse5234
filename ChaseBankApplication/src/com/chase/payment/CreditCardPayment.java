@@ -1,4 +1,6 @@
-package edu.osu.cse5234.models;
+package com.chase.payment;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,9 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table (name="PAYMENT_INFO")
-public class PaymentInfo {	
+public class CreditCardPayment implements Serializable{	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +31,7 @@ public class PaymentInfo {
 	@Column (name="HOLDER_NAME")
 	private String cardName;
 	
-	@Column (name="CONFIRMATION_NUM")
-	private String confirmationNumber;
-	//THIS COLUMN NEEDS TO BE ADDED TO THE DATABASE AND JPA
-	
-    public PaymentInfo() {
+    public CreditCardPayment() {
     }
 
 	public int getId() {
@@ -66,13 +65,5 @@ public class PaymentInfo {
 	public void setCardName(String cardName) {
 		this.cardName = cardName;
 	}
-
-	public String getConfirmationNumber() {
-		return confirmationNumber;
-	}
-
-	public void setConfirmationNumber(String confirmationNumber) {
-		this.confirmationNumber = confirmationNumber;
-	}
-	
 }
+
