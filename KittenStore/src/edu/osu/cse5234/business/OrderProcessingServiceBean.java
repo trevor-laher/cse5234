@@ -25,14 +25,14 @@ import edu.osu.cse5234.util.ServiceLocator;
 /**
  * Session Bean implementation class OrderProcessingServiceBean
  */
-@WebServiceRef(wsdlLocation ="http://localhost:9080/ChaseBankApplication/PaymentProcessorService?wsdl")
-
 @Stateless
+@LocalBean
 public class OrderProcessingServiceBean {
 
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	@WebServiceRef(wsdlLocation ="http://localhost:9080/ChaseBankApplication/wsdl/PaymentProcessor.wsdl")
 	private PaymentProcessorService service;
 	
     public OrderProcessingServiceBean() {
