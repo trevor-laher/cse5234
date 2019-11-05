@@ -4,15 +4,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.xml.rpc.ServiceException;
-import javax.xml.ws.WebServiceRef;
 
-import com.chase.payment.CreditCardPayment;
-import com.chase.payment.PaymentProcessorService;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.rmi.RemoteException;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,8 +24,6 @@ public class OrderProcessingServiceBean {
 	@PersistenceContext
 	EntityManager entityManager;
 	
-	@WebServiceRef(wsdlLocation ="http://localhost:9080/ChaseBankApplication/wsdl/PaymentProcessor.wsdl")
-	private PaymentProcessorService service;
 	
     public OrderProcessingServiceBean() {
         // TODO Auto-generated constructor stub
@@ -67,16 +57,8 @@ public class OrderProcessingServiceBean {
         		i += 1;
         	}
         	invService.updateInventory(invItems);
-        	CreditCardPayment payment = new CreditCardPayment(order.getPayment());
-        	boolean validPayment = false;
-			try {
-				URL address = new URL(service.getPaymentProcessorAddress());
-				String val = service.getPaymentProcessor(address).processPayment(payment);
-				validPayment = Integer.parseInt(val) > 0;
-			} catch (MalformedURLException | RemoteException | ServiceException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        	//Add criteria to determine valid payment in another service
+        	boolean validPayment = true;
         	if (validPayment && valid) {
         		order.getPayment().setConfirmationNumber(confirmation);
         		entityManager.persist(order);
