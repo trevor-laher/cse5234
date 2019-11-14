@@ -1,11 +1,17 @@
 package edu.osu.cse5234.business;
 
+import javax.annotation.Resource;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.jms.JMSConnectionFactory;
+import javax.jms.JMSContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.resource.cci.ConnectionFactory;
 
 import java.util.List;
+import java.util.Queue;
 import java.util.UUID;
 
 import edu.osu.cse5234.business.view.InventoryServiceRemote;
@@ -14,6 +20,9 @@ import edu.osu.cse5234.models.LineItem;
 import edu.osu.cse5234.models.Order;
 import edu.osu.cse5234.util.ServiceLocator;
 
+
+@Resource(name="jms/emailQCF", lookup ="jms/emailQCF", type=ConnectionFactory.class)
+
 /**
  * Session Bean implementation class OrderProcessingServiceBean
  */
@@ -21,6 +30,14 @@ import edu.osu.cse5234.util.ServiceLocator;
 @LocalBean
 public class OrderProcessingServiceBean {
 
+	@Inject
+	@JMSConnectionFactory("java:comp/env/jms/emailQCF")
+	private JMSContext jmsContext;
+
+	@Resource(lookup="jms/emailQ")
+	private Queue queue;
+
+	
 	@PersistenceContext
 	EntityManager entityManager;
 	
@@ -28,7 +45,7 @@ public class OrderProcessingServiceBean {
     public OrderProcessingServiceBean() {
         // TODO Auto-generated constructor stub
     }
-    
+        
     public String processOrder(Order order){
     	String confirmation = UUID.randomUUID().toString();
     	if (this.validateItemAvailability(order)) {
