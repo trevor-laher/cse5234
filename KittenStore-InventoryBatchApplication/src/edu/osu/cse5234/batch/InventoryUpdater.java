@@ -34,7 +34,6 @@ public class InventoryUpdater {
 	private static Collection<Integer> getNewOrders(Connection conn) throws SQLException {
 		Collection<Integer> orderIds = new ArrayList<Integer>();
 		ResultSet rset = conn.createStatement().executeQuery("select ID from CUSTOMER_ORDER where STATUS = 'New'");
-		rset.
 		while (rset.next()) {
 			orderIds.add(new Integer(rset.getInt("ID")));
 		}
@@ -86,7 +85,16 @@ public class InventoryUpdater {
 	}
 	
 	private static void udpateOrderStatus(Collection<Integer> newOrderIds, Connection conn) throws SQLException {
-		// TODO Auto-generated method stub
+		String statement = "UPDATE CUSTOMER_ORDER SET STATUS='Processed' WHERE ";
+		int count = 0;
+		for(Integer id : newOrderIds) {
+			if(count == 0) {
+				statement += "WHERE id="+id;
+			} else {
+				statement += "OR id="+id;
+			}
+		}
+		ResultSet rset = conn.createStatement().executeQuery(statement);
 	}
 	
 	private static Map<Integer, Integer> createItemMap(ArrayList<Integer> itemNums, ArrayList<Integer> quantities) {
